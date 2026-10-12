@@ -1,0 +1,12 @@
+{
+  "name": "rag-assistant-frontend",
+  "version": "1.0.0",
+  "description": "Verified RAG Knowledge Assistant - Frontend UI",
+  "scripts": {
+    "start": "serve . -l 3000",
+    "dev": "serve . -l 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

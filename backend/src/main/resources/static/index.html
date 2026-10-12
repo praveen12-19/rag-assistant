@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified RAG Knowledge Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">Verified RAG Knowledge Assistant</h1>
+                    <p class="brand-subtitle">Strictly Grounded &bull; Zero Hallucination &bull; Citation Verified</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Connecting...</span>
+                </div>
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" id="tabAssistantBtn" onclick="switchTab('assistant')">Knowledge Base</button>
+                    <button class="nav-tab" id="tabAdminBtn" onclick="switchTab('admin')">Audit & History</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- TAB 1: Assistant & Ingestion View -->
+            <div id="viewAssistant" class="tab-view active">
+                <div class="layout-grid">
+                    <!-- Left Column: Document Ingestion & Document List -->
+                    <section class="card panel-docs">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <h2>Policy Documents</h2>
+                                <span class="badge" id="docCountBadge">0 uploaded</span>
+                            </div>
+                        </div>
+
+                        <!-- Upload Zone -->
+                        <div class="upload-dropzone" id="dropZone">
+                            <input type="file" id="pdfFileInput" accept="application/pdf" style="display: none;" onchange="handleFileSelect(event)">
+                            <div class="dropzone-content" onclick="document.getElementById('pdfFileInput').click()">
+                                <div class="upload-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                    </svg>
+                                </div>
+                                <p class="upload-prompt"><strong>Click to upload</strong> or drag & drop a PDF</p>
+                                <span class="upload-hint">Company policies, handbooks, SOPs (Max 20MB)</span>
+                            </div>
+                        </div>
+
+                        <div id="uploadProgress" class="upload-progress-bar" style="display: none;">
+                            <div class="spinner-small"></div>
+                            <span id="uploadStatusText">Ingesting, chunking & embedding...</span>
+                        </div>
+
+                        <!-- Documents List Table -->
+                        <div class="docs-table-wrapper">
+                            <table class="data-table" id="docsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Document</th>
+                                        <th>Version</th>
+                                        <th>Pages</th>
+                                        <th>Chunks</th>
+                                        <th>Uploaded</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="docsTableBody">
+                                    <tr class="empty-row">
+                                        <td colspan="5">No documents ingested yet. Upload a PDF to begin.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Right Column: Ask Question & Verified Grounded Answer -->
+                    <section class="card panel-qa">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <h2>Ask Knowledge Assistant</h2>
+                                <span class="badge-accent">Strict Refusal Threshold: 0.65</span>
+                            </div>
+                        </div>
+
+                        <!-- Question Form -->
+                        <form id="askForm" onsubmit="handleAskQuestion(event)">
+                            <div class="input-container">
+                                <textarea id="questionInput" rows="3" placeholder="Ask a question about the uploaded corporate policies (e.g., 'What is the annual leave policy?' or 'What flight class is allowed for trips under 6 hours?')" required></textarea>
+                            </div>
+
+                            <!-- Sample Questions Chips -->
+                            <div class="sample-chips">
+                                <span class="chips-label">Sample queries:</span>
+                                <button type="button" class="chip" onclick="fillQuestion('How many days of annual leave do employees accrue per calendar year?')">Leave Accrual</button>
+                                <button type="button" class="chip" onclick="fillQuestion('What is the minimum character length required for corporate passwords?')">Password Length</button>
+                                <button type="button" class="chip" onclick="fillQuestion('Within what time frame must security incidents be reported to the SOC?')">SOC Incident SLA</button>
+                                <button type="button" class="chip chip-refusal" onclick="fillQuestion('Are employees allowed to bring pet dogs to the office on Fridays?')">Uncovered Query (Test Refusal)</button>
+                            </div>
+
+                            <div class="action-bar">
+                                <button type="submit" id="btnAsk" class="btn-primary">
+                                    <span class="btn-text">Ask Verified Assistant</span>
+                                    <div class="btn-spinner" style="display: none;"></div>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Answer Results Display Container -->
+                        <div id="answerContainer" class="answer-container" style="display: none;">
+                            <!-- Header with Status and Confidence -->
+                            <div class="answer-header" id="answerHeader">
+                                <div class="answer-status-pill" id="answerStatusPill">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text" id="answerStatusText">Verified Grounded Answer</span>
+                                </div>
+                                <div class="confidence-meter" id="confidenceMeter">
+                                    <span class="meter-label">Semantic Confidence:</span>
+                                    <span class="meter-value" id="confidenceValue">89%</span>
+                                </div>
+                            </div>
+
+                            <!-- Answer Body -->
+                            <div class="answer-body" id="answerBodyText">
+                                <!-- Dynamic Answer Content -->
+                            </div>
+
+                            <!-- Citations Section -->
+                            <div class="citations-section" id="citationsSection">
+                                <h3 class="citations-title">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                    Source Citations & Evidence
+                                </h3>
+                                <div class="citations-list" id="citationsList">
+                                    <!-- Dynamic Citations -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- TAB 2: Admin Audit & Query History View -->
+            <div id="viewAdmin" class="tab-view" style="display: none;">
+                <section class="card panel-admin">
+                    <div class="card-header admin-header">
+                        <div class="card-title-group">
+                            <h2>Query Audit Log</h2>
+                            <p class="subtitle">Complete audit trail of user queries, similarity scores, latency, and refusal decisions</p>
+                        </div>
+                        <div class="admin-filters">
+                            <button class="filter-btn active" id="btnFilterAll" onclick="loadHistory(false)">All Queries</button>
+                            <button class="filter-btn" id="btnFilterUnanswered" onclick="loadHistory(true)">Unanswered / Refused Only</button>
+                            <button class="btn-refresh" onclick="refreshAdminLogs()" title="Refresh Logs">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="history-table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Question</th>
+                                    <th>Answer / Decision</th>
+                                    <th>Status</th>
+                                    <th>Top Score</th>
+                                    <th>Latency</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <tr class="empty-row">
+                                    <td colspan="7">Loading query history...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toastNotification" class="toast" style="display: none;"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

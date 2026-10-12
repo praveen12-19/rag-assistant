@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "question": "How many days of paid annual leave do employees accrue per calendar year?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "Employees accrue 18 days of paid annual leave per calendar year at a rate of 1.5 days per completed month of service."
+  },
+  {
+    "id": 2,
+    "question": "What is the maximum number of unused annual leave days an employee can carry forward?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "Employees may carry forward a maximum of 30 unused annual leave days into the subsequent calendar year."
+  },
+  {
+    "id": 3,
+    "question": "When is an official medical certificate required for sick leave?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 2,
+    "expected_answer": "A medical certificate signed by a licensed medical practitioner is required if an employee is absent due to illness for more than 3 consecutive working days."
+  },
+  {
+    "id": 4,
+    "question": "How many days of paid bereavement leave are provided?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 2,
+    "expected_answer": "Employees are entitled to 5 working days of paid bereavement leave in the event of the demise of an immediate family member."
+  },
+  {
+    "id": 5,
+    "question": "How many weeks of paid maternity leave are female employees entitled to?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 3,
+    "expected_answer": "Female employees are entitled to 26 weeks of fully paid maternity leave for up to two surviving children."
+  },
+  {
+    "id": 6,
+    "question": "What is the continuous service requirement to be eligible for a sabbatical?",
+    "is_answerable": true,
+    "expected_document": "hr-leave-policy.pdf",
+    "expected_page": 3,
+    "expected_answer": "Employees must have completed at least 3 years of continuous service to apply for an unpaid sabbatical of 3 to 12 months."
+  },
+  {
+    "id": 7,
+    "question": "What is the minimum character length required for passwords?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "Passwords must be a minimum of 14 characters in length and include uppercase, lowercase, numbers, and special characters."
+  },
+  {
+    "id": 8,
+    "question": "How frequently must passwords be changed and how many past passwords cannot be reused?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "Passwords must be changed every 90 days and reuse of the previous 6 passwords is prohibited."
+  },
+  {
+    "id": 9,
+    "question": "Why is SMS-based OTP prohibited for multi-factor authentication?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "SMS-based OTP is prohibited due to SIM-swapping risks."
+  },
+  {
+    "id": 10,
+    "question": "What is the automatic screen lock timeout period for workstations?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 2,
+    "expected_answer": "Workstations must automatically lock after 5 minutes of inactivity."
+  },
+  {
+    "id": 11,
+    "question": "Within what time frame must suspected security incidents be reported to the SOC?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 3,
+    "expected_answer": "Suspected security incidents must be reported to the Security Operations Center (SOC) within 30 minutes of discovery."
+  },
+  {
+    "id": 12,
+    "question": "What VPN protocol is mandated for secure remote access?",
+    "is_answerable": true,
+    "expected_document": "it-security-policy.pdf",
+    "expected_page": 3,
+    "expected_answer": "Remote access is permitted only through the corporate WireGuard VPN tunnel, with split tunneling prohibited."
+  },
+  {
+    "id": 13,
+    "question": "Under what flight duration must employees book economy class?",
+    "is_answerable": true,
+    "expected_document": "travel-policy.pdf",
+    "expected_page": 1,
+    "expected_answer": "For flights with scheduled duration under 6 continuous hours, employees must book economy class."
+  },
+  {
+    "id": 14,
+    "question": "What is the domestic daily meal per diem rate and can alcohol be reimbursed?",
+    "is_answerable": true,
+    "expected_document": "travel-policy.pdf",
+    "expected_page": 2,
+    "expected_answer": "The domestic meal per diem is $75 per day total, and alcohol purchases are strictly non-reimbursable."
+  },
+  {
+    "id": 15,
+    "question": "Within how many calendar days must travel expense reports be submitted via Concur?",
+    "is_answerable": true,
+    "expected_document": "travel-policy.pdf",
+    "expected_page": 3,
+    "expected_answer": "All business travel expense reports must be submitted via Concur within 14 calendar days following the conclusion of the trip."
+  },
+  {
+    "id": 16,
+    "question": "Are employees allowed to bring pet dogs to the office on Fridays?",
+    "is_answerable": false,
+    "expected_document": null,
+    "expected_page": null,
+    "expected_answer": "I couldn't find this in the uploaded documents."
+  },
+  {
+    "id": 17,
+    "question": "What is the four-year vesting schedule and cliff for employee stock options?",
+    "is_answerable": false,
+    "expected_document": null,
+    "expected_page": null,
+    "expected_answer": "I couldn't find this in the uploaded documents."
+  },
+  {
+    "id": 18,
+    "question": "How much can employees expense for home office standing desks and monitors?",
+    "is_answerable": false,
+    "expected_document": null,
+    "expected_page": null,
+    "expected_answer": "I couldn't find this in the uploaded documents."
+  },
+  {
+    "id": 19,
+    "question": "What is the allowable daily per diem rate for corporate expeditions to Antarctica?",
+    "is_answerable": false,
+    "expected_document": null,
+    "expected_page": null,
+    "expected_answer": "I couldn't find this in the uploaded documents."
+  },
+  {
+    "id": 20,
+    "question": "Which brands of electric vehicles are compatible with the free parking lot chargers?",
+    "is_answerable": false,
+    "expected_document": null,
+    "expected_page": null,
+    "expected_answer": "I couldn't find this in the uploaded documents."
+  }
+]

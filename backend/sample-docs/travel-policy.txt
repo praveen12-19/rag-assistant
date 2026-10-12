@@ -1,0 +1,29 @@
+ACME CORPORATION - BUSINESS TRAVEL AND EXPENSE POLICY (POL-TRV-2026-V1)
+
+=== PAGE 1 ===
+1. TRAVEL BOOKINGS AND LODGING GUIDELINES
+All business travel must be pre-approved by the department manager before any reservations are made.
+Flights: For domestic and international flights with scheduled duration under 6 continuous hours, employees must book economy class. For international flights exceeding 6 hours of continuous flight time, employees are eligible to book premium economy class. Business class travel is permitted only for C-suite executives or with prior written sign-off from the Chief Financial Officer (CFO).
+Hotel accommodations: Hotel bookings must be arranged through the corporate travel partner tool (Navan).
+The maximum allowable nightly lodging reimbursement is $200 per night (excluding taxes) for domestic locations, and up to $350 per night for high-cost international tier-1 cities (e.g., London, Tokyo, Zurich, New York).
+Personal upgrades and hotel loyalty club fee reimbursements are the sole responsibility of the employee.
+
+=== PAGE 2 ===
+2. DAILY MEAL PER DIEM AND GROUND TRANSPORTATION
+Acme Corporation provides a daily meal allowance (per diem) to cover breakfast, lunch, and dinner while on business travel status.
+Domestic per diem rate: $75 per day total (suggested breakdown: $15 breakfast, $25 lunch, $35 dinner).
+International per diem rate: $120 per day total.
+Alcohol policy: Alcohol purchases of any kind are strictly non-reimbursable and must be paid for separately from business meal receipts.
+Client entertainment dinners where alcohol is served must be pre-authorized by a Vice President and submitted under Client Entertainment rather than individual travel meals.
+Ground transportation: Employees should utilize standard rideshare services (UberX, Lyft Standard) or public transit. Premium rideshare tiers (Uber Black, Lyft Lux) and rental cars above mid-size class are not reimbursable without prior manager justification.
+
+=== PAGE 3 ===
+3. EXPENSE REIMBURSEMENT AND APPROVAL WORKFLOW
+All business travel expense reports must be submitted via Concur within 14 calendar days following the conclusion of the trip.
+Itemized receipts are mandatory for all individual expenses of $25 or greater. Credit card summary slips that do not display purchased items line-by-line are not acceptable for audit compliance.
+Approval matrix:
+- Expense reports up to $1,000 require approval by the direct line Manager.
+- Expense reports between $1,001 and $5,000 require approval by the Department Vice President (VP).
+- Expense reports exceeding $5,000 require approval by both the VP and the Corporate Controller.
+Reimbursements are processed via direct deposit on the standard bi-weekly payroll cycle after final audit approval.
+Unused airline credits or hotel vouchers issued due to company trip cancellations remain the property of Acme Corporation and must be applied toward future business travel.
